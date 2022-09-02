@@ -1,13 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Sen', sans-serif;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Sen', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  background-color: #EBF7FF!important;
+  min-height: 100vh;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Sen', sans-serif;
+}
+
+footer {
+  color: #707070;
+  font-size: small;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  height: 2em;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* @media (max-width : 991px) {
+  footer{
+    padding-top: 20px;
+    margin: 0;
+    position: static;
+  }
+} */
+
+.navbar {
+  z-index:1; 
+  position: fixed!important;
+  top: 0;
+  width: 100%;
+}
+/* .dropdown-item{
+  padding: 0.25rem 1.3rem!important;
+} */
+.menu_active{
+  font-weight: bold;
+  border-bottom: 0.2em solid #0b78dd;
+  color: #0b78dd!important;
+}
+.navbar {
+  padding-bottom: 0!important;
+}
+[type=search] {
+  border-radius: 0.75em 0  0 0.75em!important;
+}
+.form-control:focus {
+  box-shadow: none !important;
+    outline: none !important;
+}
+::-webkit-input-placeholder {
+  font-size: 0.875rem;
+}
+
+#button-addon2 {
+  border-radius: 0 0.75em  0.75em 0!important;
+  /* top-left top-right bottom-right bottom-left.  */
+  background-color: #0b78dd!important;
+  color:white;
+}
+.dropdown-toggle::after {
+  content: none!important;
+}
+.icon-background{
+  width: 30px; 
+  height: 30px;
+  margin:auto; 
+  display: inline-block; 
+  vertical-align: middle; 
+  align-items: center;
+  border-radius: 4px; 
+} 
+.table {
+  border-collapse: separate;
+  border-spacing:0 5px;
+}
+.table>:not(caption)>*>* {
+  padding: 0.2rem 1rem!important;
+  /* top-bottom and right-left */
+}
+.input-group .btn {
+  z-index: 0!important;
+}
+.newConn{
+  background-color: #E6E6F2;
+  color: #4A4AFF;
+  border-radius: 0.35em;
+  text-align: center;
+  width: fit-content;
+  padding: 3px;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+.refill{
+  background-color: #FFF6D1;
+  color: #FFBC10;
+  border-radius: 0.35em;
+  text-align: center;
+  width: fit-content;
+  padding: 3px;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+.incomplete{
+  background-color: #FFF0F0;
+  color: #EB5757;
+  border-radius: 0.35em;
+  text-align: center;
+  width: fit-content;
+  padding: 3px;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+.complete{
+  background-color: #F0FFF8;
+  color: #18AB56;
+  border-radius: 0.35em;
+  text-align: center;
+  width: fit-content;
+  padding: 3px;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+.text-right{
+  text-align:right!important;
+}
+th {
+  overflow: auto;
+  white-space: nowrap;
+  font-family: 'Sen', sans-serif;
+}
+td {
+  overflow: auto;
+  white-space: nowrap;
+  font-family: 'Sen', sans-serif;
+}
+.prev{
+  height: 2rem;
+  width: 2.75rem;
+  border-radius: 0.5rem;
+  padding: 4px 10px 6px 10px;
+  cursor: pointer;
+}
+.css-13mmuzo-MuiSvgIcon-root {
+  width: 0.7em!important;
+  height: 0.7em!important;
+}
+.next{
+  height: 2rem;
+  width: 2.75rem;
+  border-radius: 0.5rem;
+  padding: 4px 10px 6px 10px;
+  cursor: pointer;
+  margin-left: 0.8rem;
+  margin-top: 0.5rem;
+}
+/* booking details */
+.css-mdfd76 {
+  overflow-y: auto!important;
+}
+.css-1d159sf-MuiSvgIcon-root {
+  width: 0.7em!important;
+  height: 0.7em!important;
+}
+@media (min-width : 992px) {
+  .pr-lg-2{
+    padding-right: 0.6em!important;
+  }
+}
+
+.round{
+  border-radius: 0.75em!important;
+}
+
+.card {
+  align-items: center;
+  display: block !important;
+}
+.btn-get-started{
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #3498db;
+  text-decoration: none;
+  border: 2px solid #3498db;
+}
+.btn-get-started:hover{
+  background: #3498db;
+  color: #fff;
+}
+.results{
+  margin: auto; 
+  padding-top: 1rem;
+}
+/* alerts */
+.alert-container {
+  position:fixed; 
+  bottom: 0px; 
+  z-index:9999; 
+  border-radius:0px
+}
+#alerts{
+  position:relative; 
+}
+@media (max-width : 991px) {
+  #alerts{
+    position:relative; 
+    width: 95%;
+    margin: 1em;
+  }
+}
+@media screen and (min-width: 991px) {
+  .alert-container {
+    margin-left: 30%;
+    margin-right: 30%;
+    width : 40%;
+  }
+}
+ /* finance */
+ .css-pe0pe4-MuiFormControl-root {
+   display: inline!important;
+ }
+ .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  font-family: 'Sen'!important;
+  font-weight: bold!important;
+ }
+ /* scrollbar */
+ body::-webkit-scrollbar {
+  width: 8px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #515153;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #515153;  /* creates padding around scroll thumb */
+}
+
+.css-15a0cvm-MuiInputBase-root-MuiInput-root:before {
+  border-bottom: 0!important;
+}
+.css-1b8scep-MuiInputBase-root-MuiInput-root:before {
+  border-bottom: 0!important;
+}
+
+@media (max-width : 450px) {
+  .css-siffa7 {
+    width: 100%;
+  }
 }
