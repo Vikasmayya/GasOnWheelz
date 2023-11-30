@@ -1,0 +1,2 @@
+(this.webpackJsonpgasonwheelz=this.webpackJsonpgasonwheelz||[]).push([[26],{185:function(e,t,s){"use strict";s.r(t);s(8);var a=s(9);t.default=function(e){return e.alert&&Object(a.jsx)("div",{className:"alert alert-".concat(e.alert.type," alert-dismissible fade show"),role:"alert",id:"alerts",children:Object(a.jsx)("strong",{style:{textTransform:"capitalize"},children:e.alert.msg})})}}}]);
+//# sourceMappingURL=26.f3057e90.chunk.js.map

@@ -46,7 +46,7 @@ const Registration =({showAlert}) => {
                     date : serverTimestamp(),
                 })      
                 .then(() =>{
-                    showAlert(` ${data.fname} is Registered successfully. He can now order Gas Cylinder.`)
+                    showAlert(` ${data.fname} is Registered successfully. He can now order Gas Cylinder.`,'info')
                     setData({
                         fname:"",
                         lname:"",

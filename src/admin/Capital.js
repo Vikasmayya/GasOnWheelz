@@ -21,8 +21,10 @@ const Capital = ({alert,handleClose}) => {
         });
     };
 
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const CapitalFormSubmit =(e) =>{
         e.preventDefault();
+        setIsButtonDisabled(true);
         firestore.collection("Capital").doc("capital").set({
             capital: increment(Number(data.camount)),
         },{merge:true})      
@@ -63,11 +65,11 @@ const Capital = ({alert,handleClose}) => {
             <input style={{backgroundColor:"#F6FAFD"}} type="number" className="form-control round" id="exampleFormControlInput1" name="camount" value={data.camount} onChange={InputEvent} placeholder="Enter Capital Amount" required/>
             </div>
             {/* <div className="col-10 text-center"> */}
-            <button style={{width:"75%", marginLeft:"2.2em"}} className="btn btn-primary" type="submit">Add</button>
+            <button style={{width:"75%", marginLeft:"2.2em"}} className="btn btn-primary" disabled={isButtonDisabled} type="submit">Add</button>
             {/* </div> */}
         </form>
             <div className="col-10  mt-3">
-            <Button style={{textTransform:'capitalize',fontWeight:'bold'}}  className=" w-100" variant='text' onClick={handleClose}>Cancel</Button>
+            <Button style={{textTransform:'capitalize',fontWeight:'bold'}} className=" w-100" variant='text' onClick={handleClose}>Cancel</Button>
             </div>
     </div>
     </div>
