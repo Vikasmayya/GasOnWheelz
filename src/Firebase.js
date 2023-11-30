@@ -10,7 +10,6 @@ const firebaseConfig = {
     storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
     appId: process.env.REACT_APP_FIREBASE_APP_ID,
-    databaseURL: "https://mall-e4018-default-rtdb.asia-southeast1.firebasedatabase.app",
   };
   firebase.initializeApp(firebaseConfig);
 

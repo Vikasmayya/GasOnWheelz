@@ -24,8 +24,11 @@ const Purchases = ({alert,handleClose}) => {
           return{...preVal, [name] : event.target.type === "number" ? parseInt(value) : value,}
       });
     };
+
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const formSubmit =(e) =>{
       e.preventDefault();
+      setIsButtonDisabled(true);
       if(data.type==="REFILL"){
         firestore.collection("Purchase").doc(today).set({
           [`${data.gas}${data.dname}${data.type}`]:{
@@ -49,6 +52,8 @@ const Purchases = ({alert,handleClose}) => {
           .then(() =>{
             firestore.collection("Capital").doc("capital").set({
               capital: increment(Number(-data.price* data.quantity)),
+              // [`full_${kg}`]: increment(data.quantity),
+              // [`empty_${kg}`]: increment(-data.empty),
             },{merge:true})      
             .then(() =>{
               firestore.collection("Capital").doc("capital").get()
@@ -137,16 +142,16 @@ const Purchases = ({alert,handleClose}) => {
                       <label htmlFor="exampleFormControlInput1" className="form-label fw-bold">Name of Dealer </label>
                       <input style={{backgroundColor:"#F6FAFD", fontSize:'1.125rem'}} type="text" list="dnames" className="form-control round" id="exampleFormControlInput1" name="dname" value={data.dname} onChange={InputEvent} placeholder="Enter the Dealer Name" required/>
                       <datalist id="dnames">
-                          <option>TOIPL</option>
-                          <option>Balaji</option>
-                        </datalist>
+                        <option>TOIPL</option>
+                        <option>Balaji</option>
+                      </datalist>
                       </div>
                       <div className="mb-3">
                         <label htmlFor="exampleFormControlSelect1" className="form-label fw-bold">Type of order Required</label>
                         <select style={{backgroundColor:"#F6FAFD", fontSize:'1.125rem'}} className="form-control round" id="exampleFormControlSelect1" name="type" value={data.type} onChange={InputEvent} required>
                           <option style={{ fontSize:'0.875rem'}} value="">Select Type Of Purchase</option>
-                          <option value="REFILL">Refill</option>
-                          <option value="NEW_CONNECTION">New-Connection</option>
+                          <option className="refill fs-5" value="REFILL">Refill</option>
+                          <option className="newConn fs-5" value="NEW_CONNECTION">New-Connection</option>
                         </select>
                       </div>
                      </div> 
@@ -188,7 +193,7 @@ const Purchases = ({alert,handleClose}) => {
                       }
                       <div className="col-4 float-end">
                       <Tooltip title="Submit Purchase Order">
-                        <button className="btn btn-primary w-100 text-white" type="submit">Submit</button>
+                        <button className="btn btn-primary w-100 text-white" disabled={isButtonDisabled} type="submit">Submit</button>
                       </Tooltip>
                       </div>
                     </div>  
