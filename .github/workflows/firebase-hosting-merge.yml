@@ -9,6 +9,8 @@ name: Deploy to Firebase Hosting on merge
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    env:
+     CI: false
     steps:
       - uses: actions/checkout@v2
       - run: npm install
@@ -19,5 +21,3 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GASONWHEELZ_4488B }}'
           channelId: live
           projectId: gasonwheelz-4488b
-           env:
-     CI: false
