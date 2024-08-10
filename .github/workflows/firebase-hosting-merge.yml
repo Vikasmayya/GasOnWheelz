@@ -5,8 +5,8 @@
 name: Deploy to Firebase Hosting on merge
 'on':
   push:
-    branches:
-      - dashboard_changes
+    branches: [main]
+      # - dashboard_changes
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
