@@ -99,24 +99,28 @@ const Finance = () => {
       setDates(item)
       setOpen(false);
     };
-    useEffect(() =>{
-        firestore.collection("Capital").doc("capital").get()
-        .then(document =>{
-          try{
-            setCapital(document.data().capital);
-          }catch(e){showAlert("Sorry! Data can't be retrieved.","danger")}
-          firestore.collection("Daily_data").doc(dates.toDateString()).get()
-          .then(doc => {
-            if (!doc.exists) {
-              showAlert("Sorry!There doesn't exists any Data on this Date.","danger")
-              setDailyData(...initialState);
-            } else {
-              setDailyData(doc.data());
-            }
-            })
-          .catch(err => { console.log('Error getting document', err);})
-        })
-        .catch(err => { console.log('Error getting document', err);})
+    useEffect(() => {
+      const unsubscribeCapital = firestore.collection("Capital").doc("capital").onSnapshot(document => {
+        try {
+          setCapital(document.data().capital);
+        } catch (e) {
+          showAlert("Sorry! Data can't be retrieved.", "danger");
+        }
+      });
+  
+      const unsubscribeDailyData = firestore.collection("Daily_data").doc(dates.toDateString()).onSnapshot(doc => {
+        if (!doc.exists) {
+          showAlert("Sorry! There doesn't exist any Data on this Date.", "danger");
+          setDailyData(initialState);
+        } else {
+          setDailyData(doc.data());
+        }
+      });
+  
+      return () => {
+        unsubscribeCapital();
+        unsubscribeDailyData();
+      };
     }, [dates, initialState]);
 
     const pnl = (DailyData["total_sales_amount"] ? DailyData["total_sales_amount"] : 0)

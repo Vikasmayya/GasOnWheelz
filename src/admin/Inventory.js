@@ -87,18 +87,22 @@ const Inventory = () => {
       setDates(item)
       setOpen(false);
     };
-    useEffect(() =>{
-          firestore.collection("Daily_data").doc(dates.toDateString()).get()
-          .then(doc => {
-            if (!doc.exists) {
-              showAlert("Sorry!There doesn't exists any Data on this Date.","danger")
-              setDailyData(...initialState);
-            } else {
-              setDailyData(doc.data());
-            }
-            })
-          .catch(err => { console.log('Error getting document', err);})
-    }, [dates, initialState]);  
+    useEffect(() => {
+      const unsubscribe = firestore.collection("Daily_data").doc(dates.toDateString())
+        .onSnapshot(doc => {
+          if (!doc.exists) {
+            showAlert("Sorry! There doesn't exist any data on this date.", "danger");
+            setDailyData(...initialState);
+          } else {
+            setDailyData(doc.data());
+          }
+        }, err => {
+          console.log('Error getting document', err);
+        });
+    
+      // Cleanup subscription on unmount
+      return () => unsubscribe();
+    }, [dates, initialState]);    
 
     // const tKGfull = (DailyData["complete_orders"] ?  DailyData["complete_orders"].tKG_full:0)
     //                +(DailyData["incomplete_orders"] ? DailyData["incomplete_orders"].tKG_full:0)
